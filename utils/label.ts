@@ -1,0 +1,14 @@
+export const PEPEBOOST_ICON = '/images/labels/pepeboost.png';
+export const BULLX_ICON = '/images/labels/bullx.png';
+export const CREATOR_ICON = '/images/labels/creator.png';
+export const DEVELOPER_ICON = '/images/labels/developer.png';
+export const GMGN_ICON = '/images/labels/gmgn.png';
+export const PHOTON_ICON = '/images/labels/photon.png';
+export const RAT_TRADER_ICON = '/images/labels/rat_trader.png';
+export const SNIPER_ICON = '/images/labels/sniper.png';
+export const TOP_HOLDER_ICON = '/images/labels/top_holder.png';
+export const TRANSFER_IN_ICON = '/images/labels/transfer_in.png';
+export const TROJAN_ICON = '/images/labels/trojan.png';
+export const WHALE_ICON = '/images/labels/whale.png';
+export const SMART_MONEY_ICON = '/images/labels/smart_money.png';
+export const INSIDER_ICON = '/images/labels/insider.png';

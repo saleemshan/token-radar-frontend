@@ -1,0 +1,419 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: #000000;
+    --foreground: #ffffff;
+    /* --background: #ffffff;
+  --foreground: #171717; */
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    -webkit-touch-callout: none; /* Disable long press copy on iOS */
+}
+
+.text-highlight {
+    -webkit-user-select: text; /* Safari */
+    -ms-user-select: text; /* IE10+/Edge */
+    user-select: text; /* Standard */
+    -webkit-touch-callout: default; /* Disable long press copy on iOS */
+}
+
+input {
+    @apply focus:outline-none;
+}
+
+@layer base {
+    img {
+        @apply inline-block;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+.apply-transition {
+    @apply transition-all duration-300;
+}
+
+/* width */
+::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #000000;
+    border-left: 1px solid #191919;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #131313;
+    border-radius: 5rem;
+}
+
+.points-scrollbar-thumb::-webkit-scrollbar-thumb {
+    background: #1d1617;
+    border-radius: 5rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #1f1f1f;
+}
+
+::-webkit-scrollbar-corner {
+    background: #000000;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+@media (max-width: 768px) {
+    /* Adjust breakpoint as needed for your target mobile devices */
+    .mobile-no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .mobile-no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.prose-sm > *:first-child {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+.prose-sm > * {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.prose-sm > *:last-child {
+    margin-bottom: 0;
+    margin-top: 0px;
+}
+
+.prose-sm h1 {
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.prose-sm h2 {
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.prose-sm h3 {
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.prose-sm h4 {
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.prose-sm h5 {
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.prose-sm h6 {
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.prose-sm ul {
+    font-size: 14px;
+    padding-left: 5px;
+    gap: 0px;
+}
+.prose-sm ul li {
+    margin-bottom: 4px;
+    padding: 0;
+}
+.prose-sm ol {
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+.prose-sm pre {
+    @apply whitespace-pre-wrap break-all tracking-tighter;
+}
+
+.prose-sm code {
+    @apply whitespace-pre-wrap break-all tracking-tighter;
+}
+
+.prose-.sm p {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    list-style-type: none; /* Optional: Remove bullet points */
+}
+.prose-.sm ul {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    list-style-type: none; /* Optional: Remove bullet points */
+}
+
+.prose-.sm li {
+    margin: 0; /* Remove margin from list items */
+    padding: 0; /* Remove padding from list items */
+}
+
+@keyframes animate-slide-right-to-left {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes animate-slide-left-to-right {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-left-to-right {
+    animation: animate-slide-left-to-right 0.2s ease-in-out forwards;
+}
+
+.animate-slide-right-to-left {
+    animation: animate-slide-right-to-left 0.2s ease-in-out forwards;
+}
+
+[class^='scrollLeft'],
+[class^='scrollRight'] {
+    display: none !important;
+}
+
+.custom-tooltip {
+    @apply max-w-64 px-2 py-1 rounded-md break-words overflow-hidden bg-black border border-border text-neutral-text text-2xs absolute pointer-events-none z-[1000] bottom-full mb-1;
+}
+
+.base-button {
+    @apply flex bg-table-odd rounded-lg px-4 h-12  min-h-12 items-center justify-center hover:bg-neutral-900  apply-transition text-neutral-text border border-border uppercase text-xs font-semibold min-w-fit gap-1;
+}
+
+.base-button-cancel {
+    @apply flex  rounded-lg px-4 h-12  min-h-12 items-center justify-center hover:bg-neutral-950  apply-transition text-neutral-text border border-border uppercase text-xs font-semibold min-w-fit gap-1;
+}
+
+.ats-button {
+    @apply rounded-lg px-4 h-10  min-h-10 justify-center bg-table-odd hover:bg-neutral-900  apply-transition hover:text-neutral-text border border-border uppercase text-xs font-semibold min-w-fit flex items-center gap-1;
+}
+
+.ats-button-active {
+    @apply bg-neutral-800 text-neutral-text;
+}
+
+.ats-button-inactive {
+    @apply bg-table-odd  text-neutral-text-dark;
+}
+
+.ats-input {
+    @apply rounded-lg p-2 focus:outline-none text-neutral-text bg-table-odd border focus:border-border border-border text-sm focus:bg-neutral-900;
+}
+
+/* intro.js default styles customization */
+.introjs-button.introjs-nextbutton {
+    @apply flex rounded-lg px-4 items-center !bg-table-odd focus:!bg-table-odd focus:!shadow-none focus:!border-none active:!border-0 hover:!bg-neutral-900 justify-center apply-transition !text-neutral-text !border !border-border !uppercase !text-xs !font-normal !min-w-fit;
+    text-shadow: none !important;
+}
+.introjs-button.introjs-prevbutton {
+    @apply flex rounded-lg px-4 items-center !bg-table-odd focus:!bg-table-odd focus:!border-none active:!border-spacing-0 hover:!bg-neutral-900 justify-center apply-transition !text-neutral-text !border !border-border uppercase !text-xs !font-normal !min-w-fit;
+    text-shadow: none !important;
+}
+.introjs-arrow.left {
+    border-right-color: black !important;
+}
+.introjs-arrow.right {
+    border-left-color: black !important;
+}
+.introjs-arrow.top {
+    border-top-color: black !important;
+}
+.introjs-skipbutton {
+    color: white !important;
+}
+.introjs-tooltipbuttons {
+    border-top: none !important;
+}
+.introjs-tooltip-title {
+    @apply !text-base !font-semibold;
+}
+
+/* Container styles for react-select */
+
+.custom-select__control {
+    height: fit-content; /* Matching your height (h-10) */
+    min-height: 2.5rem;
+    background-color: #101010 !important; /* Default background color */
+    border-radius: 0.375rem; /* Rounded corners (rounded-lg) */
+    padding: 0rem; /* Padding like your `px-2` */
+    border: 1px solid #191919 !important; /* Default border color */
+    color: #ccc; /* Default text color */
+}
+
+.custom-select__control--is-focused {
+    background-color: #171717 !important; /* Background color when focused */
+    border-color: #191919 !important; /* Border color when focused */
+    color: #fff; /* Text color when focused */
+}
+
+/* Dropdown menu styles */
+.custom-select__menu {
+    background-color: #333; /* Dropdown background */
+    border-radius: 0.375rem;
+    color: #fff;
+}
+
+.custom-select__menu-list {
+    background-color: #101010;
+}
+
+/* Option styles */
+.custom-select__option {
+    background-color: #101010; /* Default option background */
+    color: #ccc; /* Default option text color */
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+}
+
+/* w-full h-full rounded-lg p-2 focus:outline-none text-neutral-text bg-table-odd text-sm focus:bg-neutral-900  */
+
+.custom-select__option--is-selected {
+    background-color: #191919 !important; /* Background color for selected option */
+    color: #fff; /* Text color for selected option */
+}
+
+.custom-select__multi-value {
+    background-color: #292929 !important; /* Background color for selected option */
+    color: #dddddd !important;
+    border: 1px solid #191919 !important;
+    border-radius: 0.375rem !important;
+}
+
+.custom-select__option--is-focused {
+    background-color: #444; /* Background color when option is focused */
+}
+
+/* Single value (selected option) styles */
+.custom-select__single-value {
+    color: #fff; /* Text color for selected option */
+}
+
+/* Placeholder text styles */
+.custom-select__placeholder {
+    color: #ccc; /* Placeholder text color */
+}
+
+@keyframes glowing-positive-border {
+    0% {
+        box-shadow: 0 0 2px #80ff6c;
+    }
+    50% {
+        box-shadow: 0 0 3px #80ff6c, 0 0 5px #80ff6c;
+    }
+    100% {
+        box-shadow: 0 0 2px #80ff6c;
+    }
+}
+
+.animate-glowing-positive-border {
+    animation: glowing-positive-border 2s infinite ease-in-out;
+}
+
+@keyframes glowing-negative-border {
+    0% {
+        box-shadow: 0 0 2px #ff1850;
+    }
+    50% {
+        box-shadow: 0 0 3px #ff1850, 0 0 5px #ff1850;
+    }
+    100% {
+        box-shadow: 0 0 2px #ff1850;
+    }
+}
+
+.animate-glowing-negative-border {
+    animation: glowing-negative-border 2s infinite ease-in-out;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+    background: #101010; /* Chrome, Safari */
+    border-width: 1px;
+    border-color: #191919;
+    border-style: solid;
+    border-radius: 9999px;
+}
+
+input[type='range']::-moz-range-track {
+    background: #101010; /* Firefox */
+    border-width: 1px;
+    border-color: #191919;
+    border-style: solid;
+    border-radius: 9999px;
+}
+
+input[type='range']::-ms-track {
+    background: #101010; /* IE/Edge (legacy) */
+    border-width: 1px;
+    border-color: #191919;
+    border-style: solid;
+    border-radius: 9999px;
+}
+
+div[class$='-menu'] {
+    max-height: 200px !important;
+    overflow-y: hidden !important;
+}
+
+.drag-none {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}

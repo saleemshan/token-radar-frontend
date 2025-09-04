@@ -1,0 +1,1 @@
+type TimezoneOption = 'auto' | string;
