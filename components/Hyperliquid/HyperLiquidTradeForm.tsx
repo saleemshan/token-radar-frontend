@@ -871,7 +871,9 @@ const HyperLiquidTradeForm = ({ initialActiveTab = 'buy' }: { initialActiveTab?:
 
                                 <span className="text-white">
                                     {userFeesData
-                                        ? `${Number(userFeesData.userSpotCrossRate) * 100}%/${Number(userFeesData.userSpotAddRate) * 100}%`
+                                        ? `${(Number(userFeesData.userSpotCrossRate) * 100).toFixed(2)}%/${
+                                              Number(userFeesData.userSpotAddRate) * 100
+                                          }%`
                                         : '0.0700% / 0.0400%'}
                                 </span>
                             </div>

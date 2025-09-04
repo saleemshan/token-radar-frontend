@@ -126,7 +126,7 @@ const NewsTradingLayout = () => {
                                                     ]}
                                                     showNavigation={true}
                                                     initialActiveTab="Balances"
-                                                    hideSpotBalance={true}
+                                                    hideSpotBalance={false}
                                                 />
                                             </div>
                                         </Suspense>
