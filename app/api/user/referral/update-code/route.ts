@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import axios from 'axios'
 import { getPrivyUser } from '@/utils/privyAuth'
-import * as Sentry from '@sentry/nextjs'
+// import * as Sentry from '@sentry/nextjs'
 
 export const POST = async (request: NextRequest) => {
     const user = await getPrivyUser()
@@ -35,8 +35,8 @@ export const POST = async (request: NextRequest) => {
         return NextResponse.json({ data: response.data }, { status: 200 })
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-        Sentry.setTag('referral_update_code_status', 'failed')
-        Sentry.captureException(error)
+        // Sentry.setTag('referral_update_code_status', 'failed')
+        // Sentry.captureException(error)
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const status = (error as any).response?.status || 500

@@ -38,6 +38,7 @@ interface PairTokensProps {
     setIsSpotToken: React.Dispatch<React.SetStateAction<boolean>>
     isSpotToken: boolean | null
     spotTokenId: string | null
+    setSpotTokenId: React.Dispatch<React.SetStateAction<string | null>>
     tokenId: string | null
     loadingActiveAsset: boolean
     activeAssetData: ActiveAssetData | null
@@ -98,7 +99,7 @@ function processSpotData(
 const PairTokensProviderInner = ({ children }: { children: React.ReactNode }) => {
     const searchParams = useSearchParams()
 
-    const spotTokenId = useMemo(() => searchParams.get('coin')?.toUpperCase() ?? null, [searchParams])
+    const [spotTokenId, setSpotTokenId] = useState<string | null>(() => searchParams.get('coin')?.toUpperCase() ?? null)
 
     const { userPublicWalletAddresses, isEthWalletAddressFetched, isEthWalletAddressFetching } = useUser()
     const { webData2, marketData } = useWebDataContext()
@@ -471,6 +472,7 @@ const PairTokensProviderInner = ({ children }: { children: React.ReactNode }) =>
             setIsSpotToken,
             setTokenId,
             spotTokenId,
+            setSpotTokenId,
             tokenId,
             loadingActiveAsset,
             btcTokenPrice,
@@ -488,6 +490,7 @@ const PairTokensProviderInner = ({ children }: { children: React.ReactNode }) =>
             activeAssetData,
             isSpotToken,
             spotTokenId,
+            setSpotTokenId,
             tokenId,
             loadingActiveAsset,
             btcTokenPrice,

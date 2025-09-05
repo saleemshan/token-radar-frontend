@@ -20,6 +20,7 @@ const TokenKeyDetails = ({
     isNewsTradingPage?: boolean
 }) => {
     const { activeSpotAssetCtx, activePrepAssetCtx, isSpotToken, loadingActiveAsset } = usePairTokensContext()
+
     const { marketData, loadingMarketData } = useWebDataContext()
 
     const [showTokenPairsInfoTable, setShowTokenPairsInfoTable] = useState(false)
@@ -83,7 +84,7 @@ const TokenKeyDetails = ({
                                                     imageUrl={`https://app.hyperliquid.xyz/coins/${activePrepAssetCtx?.coin}.svg`}
                                                     symbol={activePrepAssetCtx?.coin ?? ''}
                                                 />
-                                                {activePrepAssetCtx?.coin}
+                                                <span>{activePrepAssetCtx?.coin}</span>
                                             </div>
                                         ) : (
                                             <div className="flex items-center gap-2">
@@ -92,7 +93,7 @@ const TokenKeyDetails = ({
                                                     symbol={activeSpotAsset?.symbol ?? ''}
                                                 />
 
-                                                {activeSpotAsset?.symbol}
+                                                <span>{activeSpotAsset?.symbol}</span>
                                             </div>
                                         )}
                                     </div>
@@ -108,6 +109,7 @@ const TokenKeyDetails = ({
 
                     {showSelectTokenPairs && (
                         <TokenPairsInfoTable
+                            redirect={false}
                             tableIsOpen={showTokenPairsInfoTable}
                             handleClose={() => setShowTokenPairsInfoTable(false)}
                             isNewsTradingPage={isNewsTradingPage}

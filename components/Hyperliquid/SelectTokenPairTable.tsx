@@ -14,7 +14,8 @@ import clsx from 'clsx'
 interface TokenPairsInfoTableProps {
     handleClose: () => void
     tableIsOpen: boolean
-    isNewsTradingPage?: boolean
+    showPerpsOnly?: boolean
+    redirect?: boolean
     className?: string
 }
 
@@ -28,13 +29,13 @@ const tabs = ['All', 'Perps', 'Spot']
 const TokenPairsInfoTable = ({
     tableIsOpen,
     handleClose,
-    isNewsTradingPage = false,
+    redirect = true,
     className = 'absolute top-16 left-0 right-0 z-[100] w-full max-h-[400px] overflow-hidden flex flex-col',
 }: TokenPairsInfoTableProps) => {
     const menuRef = useRef<HTMLDivElement>(null)
 
     //------Hooks------`
-    const { tokenPairData, spotTokensData, setIsSpotToken, setTokenId } = usePairTokensContext()
+    const { tokenPairData, spotTokensData, setIsSpotToken, setTokenId, setSpotTokenId } = usePairTokensContext()
     const router = useRouter()
     const isMobile = useIsMobile()
 
@@ -254,21 +255,14 @@ const TokenPairsInfoTable = ({
         localStorage.setItem('assetId', (isPerpData ? data?.assetId?.toString() : data?.coin?.toString()) || '')
 
         // Determine route based on token type
-
-        if (isNewsTradingPage) {
+        if (!redirect) {
             if (isPerpData) {
-                const perpData = data as PairData
-                setTokenId(perpData.universe.name as string)
+                setTokenId(data.universe.name as string)
                 setIsSpotToken(false)
-                router.replace('/', { scroll: false })
             } else {
-                const spotData = data as SpotAsset
-                setTokenId(spotData.tokenId as string)
+                setTokenId(data.name as string)
+                setSpotTokenId(data.coin?.toString() || null)
                 setIsSpotToken(true)
-                // Persist coin identifier in query for context to consume
-                const params = new URLSearchParams(window.location.search)
-                params.set('coin', spotData.coin)
-                router.replace(`/?${params.toString()}`, { scroll: false })
             }
             handleClose()
             return
@@ -438,7 +432,7 @@ const TokenPairsInfoTable = ({
                                                     />
                                                     {isPerpData ? data.universe.name : data.name}
                                                 </span>
-                                                <span className="px-1.5 py-0.5 text-[10px] bg-green-600/20 text-green-500 rounded">
+                                                <span className="px-1.5 py-0.5 text-[10px] bg-blue-600/20 text-blue-500 rounded">
                                                     {isPerpData ? `${data.universe.maxLeverage}X` : 'SPOT'}
                                                 </span>
                                             </div>
