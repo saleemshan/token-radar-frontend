@@ -393,7 +393,6 @@ const HyperLiquidTradeForm = ({ initialActiveTab = 'buy' }: { initialActiveTab?:
 
         // Add info toast when starting the order
         const marketDataItem = findCoinFromMarketDataByCoinId(marketData, isSpotToken ? spotTokenId?.toString() : assetId?.toString())
-
         // console.log({
         //     marketData,
         //     isSpotToken,
@@ -410,10 +409,23 @@ const HyperLiquidTradeForm = ({ initialActiveTab = 'buy' }: { initialActiveTab?:
 
         // Get szDecimals for enhanced tick size compliance
         const szDecimals = tokenPairData[assetId]?.universe.szDecimals ?? 5
-
         // Create base order
+        function getSpotTokenIdValue(spotTokenId: string): number {
+            if (spotTokenId === 'PURR/USDC') {
+                return 10000
+            }
+
+            if (spotTokenId.startsWith('@')) {
+                const numPart = parseInt(spotTokenId.slice(1), 10)
+                if (!isNaN(numPart)) {
+                    return 10000 + numPart
+                }
+            }
+            // Default fallback value
+            return 0
+        }
         const baseOrder: HyperliquidOrdersParams = {
-            coin: assetId,
+            coin: isSpotToken ? getSpotTokenIdValue(spotTokenId ?? '') : assetId,
             type: marketType === 'Market' ? 'market' : 'limit',
             side: isBuy ? 'buy' : 'sell',
             amount: amount.toString(),
